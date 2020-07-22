@@ -28,13 +28,6 @@
     <!-- Css Styles -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('css/elegant-icons.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('css/flaticon.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('css/barfiller.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('css/magnific-popup.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('css/jquery-ui.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('css/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/style.css')}}" type="text/css">
     @yield('metaName')
     <meta name="google-site-verification" content="XE0UPcgosGHbnIHodV2jKI0yD0iQinWI6C2_c7PBynE" />
@@ -65,7 +58,7 @@
                                 <a href="{{ route('categories.posts.index', $category->slug) }}">{{ $category->name }}</a>
                                 @if(count($category->posts) > 0)
                                 <ul class="dropdown">
-                                    @foreach($category->posts()->where('priority', true)->limit(10)->get() as $post)
+                                    @foreach($category->posts()->where(['priority' => true, 'status' => true])->limit(10)->get() as $post)
                                     <li><a href="{{ route('post.show', $post->slug) }}">{{ $post->name }}</a></li>
                                     @endforeach
                                 </ul>
@@ -118,13 +111,6 @@
 <!-- Js Plugins -->
 <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
-<script src="{{asset('js/jquery.nice-select.min.js')}}"></script>
-<script src="{{asset('js/jquery-ui.min.js')}}"></script>
-<script src="{{asset('js/jquery.nicescroll.min.js')}}"></script>
-<script src="{{asset('js/jquery.barfiller.js')}}"></script>
-<script src="{{asset('js/jquery.magnific-popup.min.js')}}"></script>
-<script src="{{asset('js/jquery.slicknav.js')}}"></script>
-<script src="{{asset('js/owl.carousel.min.js')}}"></script>
 <script src="{{asset('js/main.js')}}"></script>
 </body>
 

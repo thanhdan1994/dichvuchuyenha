@@ -108,3 +108,11 @@
         </div>
     </section>
 @endsection
+
+@section('js')
+    <script>
+        document.querySelectorAll('oembed[url]').forEach( element => {
+            iframely.load( element, element.attributes.url.value );
+        } );
+    </script>
+@endsection

@@ -2606,7 +2606,7 @@ ol {
 .blog__details__text img {
 	border-radius: 5px;
 	margin-top: 16px;
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 }
 
 .blog__details__video {
@@ -3798,4 +3798,12 @@ ol {
 		-webkit-transform:rotate(0) scale(1) skew(1deg);
 		transform:rotate(0) scale(1) skew(1deg)
 	}
+}
+
+figure.image img {
+    width: 100%;
+}
+figure.image figcaption {
+    text-align: center;
+    font-style: italic;
 }

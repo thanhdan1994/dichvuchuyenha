@@ -27,9 +27,9 @@ Route::get('/', function () {
 Route::get('/chuyen-muc-bai-viet/{slug}.html', function (Request $request) {
     $categories = Category::all();
     $category = Category::where('slug', $request->slug)->first();
-    $advisoryPosts = Post::where('category_id', 6)->limit(10)->get();
+    $advisoryPosts = Post::where(['category_id'=> 6, 'status' => true])->limit(10)->get();
     if ($category->id == 6) {
-        $advisoryPosts = Post::where('category_id', rand(1, 5))->limit(10)->get();
+        $advisoryPosts = Post::where(['category_id' => rand(1, 5), 'status' => true])->limit(10)->get();
     }
     return view('category', compact('categories', 'category', 'advisoryPosts'));
 })->name('categories.posts.index');
@@ -37,7 +37,7 @@ Route::get('/chuyen-muc-bai-viet/{slug}.html', function (Request $request) {
 Route::get('/bai-viet/{slug}.html', function (Request $request) {
     $categories = Category::all();
     $post = Post::where('slug', $request->slug)->first();
-    $relatedPosts = Post::where('category_id', $post->category_id)->whereNotIn('id', [$post->id])->limit(4)->get();
+    $relatedPosts = Post::where(['category_id' => $post->category_id, 'status' => true])->whereNotIn('id', [$post->id])->limit(4)->get();
     $advisoryPosts = Post::where('category_id', 6)->whereNotIn('id', [$post->id])->limit(10)->get();
     return view('post', compact('categories', 'post', 'relatedPosts', 'advisoryPosts'));
 })->name('post.show');
@@ -99,23 +99,44 @@ Route::group(['prefix' => 'administrator', 'middleware' => ['auth.basic'], 'as' 
         return view('admin.posts.index', compact('categories', 'posts'));
     })->name('categories.posts.index');
 
-    Route::get('/categories/{category}/posts/create', function (Request $request) {
+    Route::get('/categories/{category}/posts/create', function (Request $request, Category $category) {
         $categories = Category::all();
-        return view('admin.posts.create', compact('categories'));
+        return view('admin.posts.create', compact('categories', 'category'));
     })->name('categories.posts.create');
+
+    Route::post('/categories/{category}/posts/create', function (\App\Requests\CreatePostRequest $request, Category $category) {
+        $data = $request->except(['_method', '_token', 'thumbnail']);
+        $data['slug'] = Str::slug($request->name);
+        $data['status'] = $request->status ? true : false;
+        $data['priority'] = $request->priority ? true : false;
+        $data['category_id'] = $category->id;
+        if ($request->file('thumbnail')) {
+            $path = $request->file('thumbnail')->store('uploads/thumbnail', 'without_storage');
+            $data['thumbnail'] = env('APP_URL') . $path;
+        }
+        DB::beginTransaction();
+        try {
+            $post = Post::create($data);
+        } catch (Exception $exception) {
+            DB::rollBack();
+            return redirect()->route('admin.categories.posts.index', $post->category_id)->with('error', 'Có lỗi khi <strong>Thêm mới</strong> bài viết thất bại!' . $exception->getMessage());
+        }
+        DB::commit();
+        return redirect()->route('admin.categories.posts.index', $post->category_id)->with('success', 'Thêm mới bài viết thành công!');
+    })->name('categories.posts.store');
 
     Route::get('/posts/{post}/edit', function (Post $post) {
         $categories = Category::all();
         return view('admin.posts.edit', compact('categories', 'post'));
     })->name('posts.edit');
 
-    Route::put('/posts/{post}', function (Request $request, Post $post) {
+    Route::put('/posts/{post}', function (\App\Requests\UpdatePostRequest $request, Post $post) {
         $data = $request->except(['_method', '_token', 'thumbnail']);
         $data['slug'] = Str::slug($request->name);
         $data['status'] = $request->status ? true : false;
         $data['priority'] = $request->priority ? true : false;
         if ($request->file('thumbnail')) {
-            $path = $request->file('thumbnail')->store('uploads/thumbnail/' . $post->id, 'without_storage');
+            $path = $request->file('thumbnail')->store('uploads/thumbnail', 'without_storage');
             $data['thumbnail'] = env('APP_URL') . $path;
         }
         DB::beginTransaction();

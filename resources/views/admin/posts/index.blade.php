@@ -32,7 +32,7 @@
                     <td>{{$post->name}}</td>
                     <td><img width="150px" height="100px" src="{{$post->thumbnail}}" /></td>
                     <td>
-                        <a class="btn btn-success" href="{{route('admin.posts.edit', $post->id)}}">Sửa</a>
+                        <a class="btn btn-success mb-2" href="{{route('admin.posts.edit', $post->id)}}">Sửa bài viết</a>
                         <form method="post" action="{{route('admin.posts.destroy', $post->id)}}"
                               onsubmit="return confirm('Bạn chắc chắn muốn xóa bài viết này?');">
                             {{method_field('delete')}}

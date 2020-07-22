@@ -33,8 +33,7 @@
                 </div>
             </div>
         @endif
-        <form method="POST" action="{{ route('admin.posts.update', $post->id) }}" class="was-validated" enctype="multipart/form-data">
-        @method('PUT')
+        <form method="POST" action="{{ route('admin.categories.posts.store', $category->id) }}" class="was-validated" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
@@ -42,37 +41,32 @@
                     <div class="row">
                         <div class="col-12">
                             <label>Tên sản phẩm:</label>
-                            <input type="text" class="form-control" name="name" required value="{{$post->name}}">
+                            <input type="text" class="form-control" name="name" value="{{old('name')}}">
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Mô tả sản phẩm:</label>
-                    <textarea class="form-control" rows="3" name="description">{{$post->description}}</textarea>
+                    <textarea class="form-control" rows="3" name="description">{{old('description')}}</textarea>
                 </div>
                 <div class="form-group">
                     <label>Nội dung bài viết:</label>
-                    <textarea class="form-control" rows="3" name="content" id="editor">{!! $post->content !!}</textarea>
+                    <textarea class="form-control" rows="3" name="content" id="editor">{!! old('content') !!}</textarea>
                 </div>
                 <div class="form-group">
                     <label>Ảnh đại diện: </label>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <img src="{{ $post->thumbnail }}" alt="" class="img-responsive img-thumbnail">
-                        </div>
-                    </div>
                     <input type="file" name="thumbnail" />
                 </div>
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" name="status" @if($post->status) checked @endif />Kích hoạt
+                        <input type="checkbox" class="form-check-input" name="status" checked />Kích hoạt
                     </label>
                     <label class="form-check-label ml-5">
-                        <input type="checkbox" class="form-check-input" name="priority" @if($post->priority) checked @endif />Nổi bật
+                        <input type="checkbox" class="form-check-input" name="priority" />Nổi bật
                     </label>
                 </div>
                 <button type="submit" class="btn btn-primary">Lưu lại</button>
-                <a class="btn btn-danger" href="{{ route('admin.categories.posts.index', $post->category_id) }}">Hủy bỏ</a>
+                <a class="btn btn-danger" href="{{ route('admin.categories.posts.index', $category->id) }}">Hủy bỏ</a>
             </div>
         </div>
     </form>
