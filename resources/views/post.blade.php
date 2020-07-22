@@ -1,5 +1,56 @@
 @extends('app')
 
+@section('title', $post->name . ' | chuyennhatinphat.vn' )
+@section('metaName')
+    <meta name="description" content="{{ strip_tags($post->description) }}"/>
+    <meta property="og:type" content="product"/>
+    <meta property="og:title" content="{{ $post->name }}"/>
+    <meta property="og:description" content="{{ strip_tags($post->description) }}"/>
+    @if(!is_null($post->cover))
+        <meta property="og:image" content="{{ $post->thumbnail }}"/>
+    @endif
+@endsection
+
+@section('jsonLd')
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [{
+            "@type": "ListItem",
+            "position": 3,
+            "name": "<?=$post->name ?>",
+            "item": "<?=request()->url()?>"
+          },{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "<?= $post->category->name ?>",
+            "item": "<?= env('APP_URL') . '/chuyen-muc-bai-viet' . '/' . $post->category->slug . '.html'?>"
+          },{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Trang chủ",
+            "item": "<?=env('APP_URL')?>"
+          }]
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "NewsArticle",
+          "headline": "<?php echo $post->name ?>",
+          "image": [
+            "<?php echo $post->thumbnail ?>"
+           ],
+          "description": "<?=$post->description?>",
+          "author" : {
+            "@type": "Person",
+            "name": "Tín Phát Express"
+          }
+        }
+    </script>
+@endsection
+
 @section('content')
     <section class="blog-details spad">
         <div class="container">
@@ -9,7 +60,7 @@
                     <div class="blog__details__text">
                         {!! $post->content !!}
                     </div>
-                    @if(count($relatedPosts) >= 2)
+                    @if(count($relatedPosts) > 0)
                     <div class="blog__details__new__post">
                         <div class="blog__details__new__post__title">
                             <h4>Dịch vụ liên quan</h4>

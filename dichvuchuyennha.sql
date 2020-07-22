@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 21, 2020 lúc 08:36 PM
+-- Thời gian đã tạo: Th7 22, 2020 lúc 11:51 AM
 -- Phiên bản máy phục vụ: 10.4.11-MariaDB
--- Phiên bản PHP: 7.4.6
+-- Phiên bản PHP: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -155,7 +156,8 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `name`, `slug`, `value`) VALUES
-(1, 'Ảnh giới thiệu', 'banners', 'http://chuyennhatinphat.vn/img/banners/banner-1.jpg,http://chuyennhatinphat.vn/img/banners/banner-3.jpg,http://chuyennhatinphat.vn/img/banners/8QCdKzDpNLnmUW07HCouJk7f7ePMtrZIi8vOTF1J.jpeg');
+(1, 'Ảnh giới thiệu', 'banners', 'http://chuyennhatinphat.vn/img/banners/banner-1.jpg,http://chuyennhatinphat.vn/img/banners/banner-3.jpg,http://chuyennhatinphat.vn/img/banners/DhY4MJX5Y5C2HesZAVc0FOFOydtmlv2AvxOFqoF4.jpeg'),
+(2, 'Thông tin', 'information', '496 Dương Quãng Hàm - Phường 6 - Gò Vấp - TPHCM|0982390731|thanhdan26081994@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -264,7 +266,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT cho bảng `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `users`

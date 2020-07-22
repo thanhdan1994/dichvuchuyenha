@@ -1,5 +1,24 @@
 @extends('app')
 
+@section('title')
+    Chuyển nhà trọn gói, chuyển văn phòng, cho thuê taxi tải.
+@endsection
+@section('metaName')
+    <meta name="description" content="Với hơn 15 + Năm kinh nghiệm phục vụ trong lĩnh vực vận chuyển cung cấp giải pháp, phục vụ dịch vụ chuyển nhà trọn gói, chuyển văn phòng trọn gói, cho thuê xe tải vận chuyển chuyên nghiệp số 1 TPHCM. Chỉ từ 140k bạn đã có thể sử dụng được dịch vụ chuyển nhà trọn gói chuyên nghiệp tại Tín Phát Express" />
+    <meta name="keywords" content="Chuyển nhà, chuyển văn phòng, taxi tải">
+@endsection
+@section('jsonLd')
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "url": "<?=request()->url()?>",
+        "name": "Tín Phát Express - Dịch vụ chuyển nhà, chuyển nhà trọn gói, cho thuê taxi tải, chuyển văn phòng.",
+        "description": "Với hơn 15 + Năm kinh nghiệm phục vụ trong lĩnh vực vận chuyển cung cấp giải pháp, phục vụ dịch vụ chuyển nhà trọn gói, chuyển văn phòng trọn gói, cho thuê xe tải vận chuyển chuyên nghiệp số 1 TPHCM. Chỉ từ 140k bạn đã có thể sử dụng được dịch vụ chuyển nhà trọn gói chuyên nghiệp tại Tín Phát Express."
+    }
+    </script>
+@endsection
+
 @section('content')
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">

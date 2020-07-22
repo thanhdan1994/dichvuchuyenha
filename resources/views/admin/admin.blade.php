@@ -40,6 +40,7 @@
             <a class="nav-link  dropdown-toggle" data-toggle="dropdown">Cài đặt</a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="{{ route('admin.settings.banners') }}">Banners</a>
+                <a class="dropdown-item" href="{{ route('admin.settings.information') }}">Thông tin</a>
             </div>
         </li>
     </ul>

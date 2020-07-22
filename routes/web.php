@@ -24,11 +24,21 @@ Route::get('/', function () {
     return view('index', compact('categories', 'banners'));
 })->name('index');
 
+Route::get('/chuyen-muc-bai-viet/{slug}.html', function (Request $request) {
+    $categories = Category::all();
+    $category = Category::where('slug', $request->slug)->first();
+    $advisoryPosts = Post::where('category_id', 6)->limit(10)->get();
+    if ($category->id == 6) {
+        $advisoryPosts = Post::where('category_id', rand(1, 5))->limit(10)->get();
+    }
+    return view('category', compact('categories', 'category', 'advisoryPosts'));
+})->name('categories.posts.index');
+
 Route::get('/bai-viet/{slug}.html', function (Request $request) {
     $categories = Category::all();
     $post = Post::where('slug', $request->slug)->first();
     $relatedPosts = Post::where('category_id', $post->category_id)->whereNotIn('id', [$post->id])->limit(4)->get();
-    $advisoryPosts = Post::where('category_id', 6)->whereNotIn('id', [$post->id])->limit(5)->get();
+    $advisoryPosts = Post::where('category_id', 6)->whereNotIn('id', [$post->id])->limit(10)->get();
     return view('post', compact('categories', 'post', 'relatedPosts', 'advisoryPosts'));
 })->name('post.show');
 
@@ -60,6 +70,28 @@ Route::group(['prefix' => 'administrator', 'middleware' => ['auth.basic'], 'as' 
         DB::commit();
         return redirect()->route('admin.settings.banners')->with('success', 'Cập nhật cài đặt banner mới thành công!');
     })->name('settings.update.banners');
+
+    Route::get('/settings/information', function () {
+        $categories = Category::all();
+        $information = DB::table('settings')->where('slug', 'information')->pluck('value')->first();
+        $information = explode('|', $information);
+        return view('admin.settings.information', compact('categories', 'information'));
+    })->name('settings.information');
+
+    Route::put('/settings/information', function (Request $request) {
+        $information = $request->get('information');
+        DB::beginTransaction();
+        try {
+            DB::table('settings')
+                ->where('slug', 'information')
+                ->update(['value' => implode('|', $information)]);
+        } catch (Exception $exception) {
+            DB::rollBack();
+            return redirect()->route('admin.settings.information')->with('error', 'Cập nhật cài đặt thông tin mới không thành công!'. $exception->getMessage());
+        }
+        DB::commit();
+        return redirect()->route('admin.settings.information')->with('success', 'Cập nhật cài đặt thông tin mới thành công!');
+    })->name('settings.update.information');
 
     Route::get('/categories/{category}/posts', function (Request $request, Category $category) {
         $categories = Category::all();
