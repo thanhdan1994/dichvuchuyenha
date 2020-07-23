@@ -23,8 +23,8 @@ Route::post('/uploads/file', function (Request $request) {
     $banner = '';
     if ($request->file('file')) {
         try {
-            $path = $request->file('file')->store('img/banners', 'without_storage');
-            $banner = env('APP_URL') . $path;
+            $path = $request->file('file')->store('img/banners', 'public');
+            $banner = '/storage/' . $path;
         } catch (Exception $exception) {
             abort(500, 'Lỗi không thể upload image' . $exception->getMessage());
         }
