@@ -69,6 +69,7 @@ use App\Category;
                         </div>
                     @endif
                 </div>
+                @if(!empty($advisoryPosts))
                 <div class="col-lg-4">
                     <div class="blog__sidebar">
                         <div class="blog__sidebar__recent d-flex flex-column">
@@ -86,6 +87,7 @@ use App\Category;
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
     </section>
