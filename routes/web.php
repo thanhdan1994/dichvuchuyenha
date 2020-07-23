@@ -138,8 +138,8 @@ Route::group(['prefix' => 'administrator', 'middleware' => ['auth.basic'], 'as' 
     Route::put('reviews/{review}', function (\App\Requests\UpdateReviewRequest $request, Review $review) {
         $data = $request->except(['_method', '_token', 'thumbnail']);
         if ($request->file('thumbnail')) {
-            $path = $request->file('thumbnail')->store('uploads/thumbnail', 'without_storage');
-            $data['thumbnail'] = '/' . $path;
+            $path = $request->file('thumbnail')->store('reviews', 'public');
+            $data['thumbnail'] = '/storage/' . $path;
         }
         DB::beginTransaction();
         try {
@@ -174,7 +174,7 @@ Route::group(['prefix' => 'administrator', 'middleware' => ['auth.basic'], 'as' 
         $data['category_id'] = $category->id;
         if ($request->file('thumbnail')) {
             $path = $request->file('thumbnail')->store('uploads/thumbnail', 'without_storage');
-            $data['thumbnail'] = '/' . $path;
+            $data['thumbnail'] = '/storage/' . $path;
         }
         DB::beginTransaction();
         try {
@@ -199,7 +199,7 @@ Route::group(['prefix' => 'administrator', 'middleware' => ['auth.basic'], 'as' 
         $data['priority'] = $request->priority ? true : false;
         if ($request->file('thumbnail')) {
             $path = $request->file('thumbnail')->store('uploads/thumbnail', 'without_storage');
-            $data['thumbnail'] = '/' . $path;
+            $data['thumbnail'] = '/storage/' . $path;
         }
         DB::beginTransaction();
         try {
