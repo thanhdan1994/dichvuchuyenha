@@ -6,9 +6,7 @@
     <meta property="og:type" content="product"/>
     <meta property="og:title" content="{{ $post->name }}"/>
     <meta property="og:description" content="{{ strip_tags($post->description) }}"/>
-    @if(!is_null($post->cover))
-        <meta property="og:image" content="{{ $post->thumbnail }}"/>
-    @endif
+    <meta property="og:image" content="{{ $post->thumbnail }}"/>
 @endsection
 
 @section('jsonLd')
