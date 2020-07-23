@@ -139,7 +139,7 @@ Route::group(['prefix' => 'administrator', 'middleware' => ['auth.basic'], 'as' 
         $data = $request->except(['_method', '_token', 'thumbnail']);
         if ($request->file('thumbnail')) {
             $path = $request->file('thumbnail')->store('uploads/thumbnail', 'without_storage');
-            $data['thumbnail'] = env('APP_URL') . $path;
+            $data['thumbnail'] = '/' . $path;
         }
         DB::beginTransaction();
         try {
@@ -174,17 +174,17 @@ Route::group(['prefix' => 'administrator', 'middleware' => ['auth.basic'], 'as' 
         $data['category_id'] = $category->id;
         if ($request->file('thumbnail')) {
             $path = $request->file('thumbnail')->store('uploads/thumbnail', 'without_storage');
-            $data['thumbnail'] = env('APP_URL') . $path;
+            $data['thumbnail'] = '/' . $path;
         }
         DB::beginTransaction();
         try {
             $post = Post::create($data);
         } catch (Exception $exception) {
             DB::rollBack();
-            return redirect()->route('admin.categories.posts.index', $post->category_id)->with('error', 'Có lỗi khi <strong>Thêm mới</strong> bài viết thất bại!' . $exception->getMessage());
+            return redirect()->route('admin.categories.posts.index')->with('error', 'Có lỗi khi <strong>Thêm mới</strong> bài viết thất bại!' . $exception->getMessage());
         }
         DB::commit();
-        return redirect()->route('admin.categories.posts.index', $post->category_id)->with('success', 'Thêm mới bài viết thành công!');
+        return redirect()->route('admin.categories.posts.index')->with('success', 'Thêm mới bài viết thành công!');
     })->name('categories.posts.store');
 
     Route::get('/posts/{post}/edit', function (Post $post) {
@@ -199,7 +199,7 @@ Route::group(['prefix' => 'administrator', 'middleware' => ['auth.basic'], 'as' 
         $data['priority'] = $request->priority ? true : false;
         if ($request->file('thumbnail')) {
             $path = $request->file('thumbnail')->store('uploads/thumbnail', 'without_storage');
-            $data['thumbnail'] = env('APP_URL') . $path;
+            $data['thumbnail'] = '/' . $path;
         }
         DB::beginTransaction();
         try {
@@ -209,10 +209,10 @@ Route::group(['prefix' => 'administrator', 'middleware' => ['auth.basic'], 'as' 
             $post->save();
         } catch (Exception $exception) {
             DB::rollBack();
-            return redirect()->route('admin.categories.posts.index', $post->category_id)->with('error', 'Có lỗi khi <strong>CẬP NHẬT</strong> bài viết thất bại!' . $exception->getMessage());
+            return redirect()->route('admin.categories.posts.index')->with('error', 'Có lỗi khi <strong>CẬP NHẬT</strong> bài viết thất bại!' . $exception->getMessage());
         }
         DB::commit();
-        return redirect()->route('admin.categories.posts.index', $post->category_id)->with('success', 'Cập nhật bài viết thành công!');
+        return redirect()->route('admin.categories.posts.index')->with('success', 'Cập nhật bài viết thành công!');
     })->name('posts.update');
 
     Route::delete('/posts/{post}', function (Post $post) {
