@@ -173,7 +173,7 @@ Route::group(['prefix' => 'administrator', 'middleware' => ['auth.basic'], 'as' 
         $data['priority'] = $request->priority ? true : false;
         $data['category_id'] = $category->id;
         if ($request->file('thumbnail')) {
-            $path = $request->file('thumbnail')->store('uploads/thumbnail', 'without_storage');
+            $path = $request->file('thumbnail')->store('uploads/thumbnail', 'public');
             $data['thumbnail'] = '/storage/' . $path;
         }
         DB::beginTransaction();
@@ -198,7 +198,7 @@ Route::group(['prefix' => 'administrator', 'middleware' => ['auth.basic'], 'as' 
         $data['status'] = $request->status ? true : false;
         $data['priority'] = $request->priority ? true : false;
         if ($request->file('thumbnail')) {
-            $path = $request->file('thumbnail')->store('uploads/thumbnail', 'without_storage');
+            $path = $request->file('thumbnail')->store('uploads/thumbnail', 'public');
             $data['thumbnail'] = '/storage/' . $path;
         }
         DB::beginTransaction();
