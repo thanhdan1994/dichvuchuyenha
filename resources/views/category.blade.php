@@ -69,7 +69,7 @@ use App\Category;
                         </div>
                     @endif
                 </div>
-                @if(!empty($advisoryPosts))
+                @if(count($advisoryPosts) > 0)
                 <div class="col-lg-4">
                     <div class="blog__sidebar">
                         <div class="blog__sidebar__recent d-flex flex-column">
