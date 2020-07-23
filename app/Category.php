@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int id
+ * @property string description
  */
 class Category extends Model
 {

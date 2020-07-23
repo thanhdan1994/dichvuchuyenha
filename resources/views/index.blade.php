@@ -6,6 +6,7 @@
 @section('metaName')
     <meta name="description" content="Với hơn 15 + Năm kinh nghiệm phục vụ trong lĩnh vực vận chuyển cung cấp giải pháp, phục vụ dịch vụ chuyển nhà trọn gói, chuyển văn phòng trọn gói, cho thuê xe tải vận chuyển chuyên nghiệp số 1 TPHCM. Chỉ từ 140k bạn đã có thể sử dụng được dịch vụ chuyển nhà trọn gói chuyên nghiệp tại Tín Phát Express" />
     <meta name="keywords" content="Chuyển nhà, chuyển văn phòng, taxi tải">
+    <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}" type="text/css">
 @endsection
 @section('jsonLd')
     <script type="application/ld+json">
@@ -75,4 +76,63 @@
             @endforeach
         </div>
     </section>
+    <!-- Testimonial Section Begin -->
+    <section class="testimonial spad" style="background-color: #72d4dd;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Được tin tưởng hơn 5000+ khách hàng</h2>
+                        <p>Khách hàng nói gì về TÍN PHÁT</p>
+                    </div>
+                    <div class="testimonial__slider owl-carousel">
+                        @foreach($reviews as $key => $review)
+                        <div class="testimonial__item" data-hash="review-{{ $key }}">
+                            <p>"{{ $review->content }}"</p>
+                            <div class="testimonial__item__author">
+                                @if($key == 0)
+                                    <a href="#review-2">
+                                        <img src="{{ $reviews[2]->thumbnail }}">
+                                    </a>
+                                    <a href="#review-0" class="active">
+                                        <img src="{{ $reviews[0]->thumbnail }}">
+                                    </a>
+                                    <a href="#review-1">
+                                        <img src="{{ $reviews[1]->thumbnail }}">
+                                    </a>
+                                @endif
+                                @if($key == 1)
+                                    <a href="#review-0">
+                                        <img src="{{ $reviews[0]->thumbnail }}">
+                                    </a>
+                                    <a href="#review-1" class="active">
+                                        <img src="{{ $reviews[1]->thumbnail }}">
+                                    </a>
+                                    <a href="#review-2">
+                                        <img src="{{ $reviews[2]->thumbnail }}">
+                                    </a>
+                                @endif
+                                @if($key == 2)
+                                    <a href="#review-1">
+                                        <img src="{{ $reviews[1]->thumbnail }}">
+                                    </a>
+                                    <a href="#review-2" class="active">
+                                        <img src="{{ $reviews[2]->thumbnail }}">
+                                    </a>
+                                    <a href="#review-0">
+                                        <img src="{{ $reviews[0]->thumbnail }}">
+                                    </a>
+                                @endif
+                            </div>
+                            <div class="testimonial__item__author__text">
+                                <h5>{{ $review->name }}</h5>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonial Section End -->
 @endsection

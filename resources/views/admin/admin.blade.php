@@ -41,6 +41,8 @@
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="{{ route('admin.settings.banners') }}">Banners</a>
                 <a class="dropdown-item" href="{{ route('admin.settings.information') }}">Thông tin</a>
+                <a class="dropdown-item" href="{{ route('admin.categories.index') }}">Mô tả dịch vụ</a>
+                <a class="dropdown-item" href="{{ route('admin.reviews.index') }}">Đánh giá khách hàng</a>
             </div>
         </li>
     </ul>

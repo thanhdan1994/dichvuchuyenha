@@ -2,6 +2,7 @@
 
 use App\Category;
 use App\Post;
+use App\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -17,11 +18,18 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
+Route::get('/hashpassword', function (Request $request) {
+    $password = $request->get('password');
+    $hash = \Illuminate\Support\Facades\Hash::make($password);
+    echo $hash;
+});
+
 Route::get('/', function () {
     $categories = Category::all();
     $banners = DB::table('settings')->where('slug', 'banners')->pluck('value')->first();
     $banners = explode(',', $banners);
-    return view('index', compact('categories', 'banners'));
+    $reviews = DB::table('reviews')->limit(5)->get();
+    return view('index', compact('categories', 'banners', 'reviews'));
 })->name('index');
 
 Route::get('/chuyen-muc-bai-viet/{slug}.html', function (Request $request) {
@@ -93,6 +101,60 @@ Route::group(['prefix' => 'administrator', 'middleware' => ['auth.basic'], 'as' 
         return redirect()->route('admin.settings.information')->with('success', 'Cập nhật cài đặt thông tin mới thành công!');
     })->name('settings.update.information');
 
+    Route::get('/categories', function () {
+        $categories = Category::all();
+        return view('admin.categories.index', compact('categories'));
+    })->name('categories.index');
+
+    Route::get('/categories/{category}/edit', function (Category $category) {
+        $categories = Category::all();
+        return view('admin.categories.edit', compact('category', 'categories'));
+    })->name('categories.edit');
+
+    Route::put('/categories/{category}', function (Request $request, Category $category) {
+        DB::beginTransaction();
+        try {
+            $category->description = $request->get('description');
+            $category->save();
+        } catch (Exception $exception) {
+            DB::rollBack();
+            return redirect()->route('admin.categories.index')->with('error', 'Có lỗi khi cập nhật mô tả dịch vụ!' . $exception->getMessage());
+        }
+        DB::commit();
+        return redirect()->route('admin.categories.index')->with('success', 'Cập nhật mô tả dịch vụ thành công!');
+    })->name('categories.update');
+
+    Route::get('/reviews', function () {
+        $categories = Category::all();
+        $reviews = Review::all();
+        return view('admin.reviews.index', compact('categories', 'reviews'));
+    })->name('reviews.index');
+
+    Route::get('/reviews/{review}/edit', function (Review $review) {
+        $categories = Category::all();
+        return view('admin.reviews.edit', compact('review', 'categories'));
+    })->name('reviews.edit');
+
+    Route::put('reviews/{review}', function (\App\Requests\UpdateReviewRequest $request, Review $review) {
+        $data = $request->except(['_method', '_token', 'thumbnail']);
+        if ($request->file('thumbnail')) {
+            $path = $request->file('thumbnail')->store('uploads/thumbnail', 'without_storage');
+            $data['thumbnail'] = env('APP_URL') . $path;
+        }
+        DB::beginTransaction();
+        try {
+            foreach ($data as $key => $value) :
+                $review->$key = $value;
+            endforeach;
+            $review->save();
+        } catch (Exception $exception) {
+            DB::rollBack();
+            return redirect()->route('admin.reviews.index')->with('error', 'Cập nhật nội dung đánh giá thất bại ' . $exception->getMessage());
+        }
+        DB::commit();
+        return redirect()->route('admin.reviews.index')->with('success', 'Cập nhật nội dung đánh giá thành công');
+    })->name('reviews.update');
+
     Route::get('/categories/{category}/posts', function (Request $request, Category $category) {
         $categories = Category::all();
         $posts = Post::where('category_id', $category->id)->paginate(10);
@@ -104,7 +166,7 @@ Route::group(['prefix' => 'administrator', 'middleware' => ['auth.basic'], 'as' 
         return view('admin.posts.create', compact('categories', 'category'));
     })->name('categories.posts.create');
 
-    Route::post('/categories/{category}/posts/create', function (\App\Requests\CreatePostRequest $request, Category $category) {
+    Route::post('/categories/{category}/posts', function (\App\Requests\CreatePostRequest $request, Category $category) {
         $data = $request->except(['_method', '_token', 'thumbnail']);
         $data['slug'] = Str::slug($request->name);
         $data['status'] = $request->status ? true : false;

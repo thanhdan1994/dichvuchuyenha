@@ -28,6 +28,7 @@
     <!-- Css Styles -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/style.css')}}" type="text/css">
     @yield('metaName')
     <meta name="google-site-verification" content="XE0UPcgosGHbnIHodV2jKI0yD0iQinWI6C2_c7PBynE" />
@@ -111,7 +112,10 @@
 <!-- Js Plugins -->
 <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('js/jquery.slicknav.js')}}"></script>
+<script src="{{asset('js/owl.carousel.min.js')}}"></script>
 <script src="{{asset('js/main.js')}}"></script>
+@yield('js')
 </body>
 
 </html>

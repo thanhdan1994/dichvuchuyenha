@@ -12,6 +12,7 @@
 @endsection
 
 @section('jsonLd')
+    <script charset="utf-8" src="//cdn.iframe.ly/embed.js?api_key=c2b2fc7ddc097c556e1050"></script>
     <script type="application/ld+json">
         {
           "@context": "https://schema.org",

@@ -696,20 +696,6 @@ ol {
 	z-index: 1;
 }
 
-.testimonial .section-title:after {
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: -58px;
-	margin: 0 auto;
-	font-family: "FontAwesome";
-	content: "";
-	color: #f03250;
-	opacity: 0.2;
-	font-size: 60px;
-	z-index: -1;
-}
-
 .testimonial .section-title h2 {
 	color: #ffffff;
 }
@@ -719,7 +705,7 @@ ol {
 }
 
 .testimonial__slider.owl-carousel .owl-item img {
-	width: auto;
+	width: 100px;
 	display: inline-block;
 }
 
@@ -782,7 +768,7 @@ ol {
 	opacity: 0.5;
 	width: 55px;
 	height: 55px;
-	border-radius: 80px;
+	border-radius: 50%;
 }
 
 .testimonial__item__author a:last-child {
@@ -790,8 +776,8 @@ ol {
 }
 
 .testimonial__item__author a.active img {
-	width: 70px;
-	height: 70px;
+	width: 100px;
+	height: 100px;
 	opacity: 1;
 }
 
@@ -3806,4 +3792,25 @@ figure.image img {
 figure.image figcaption {
     text-align: center;
     font-style: italic;
+}
+
+figure.media {
+	display: flex;
+	justify-content: center;
+}
+
+figure.media .iframely-embed {
+	width: 700px;
+}
+
+@media screen and (max-width: 1365px) and (min-width: 375px){
+	figure.media .iframely-embed {
+		width: 370px;
+	}
+}
+
+@media screen and (max-width: 374px) {
+	figure.media .iframely-embed {
+		width: 300px;
+	}
 }

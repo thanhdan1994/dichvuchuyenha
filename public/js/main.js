@@ -16,7 +16,7 @@
     --------------------*/
     $(window).on('load', function () {
         $(".loader").fadeOut();
-        $("#preloder").delay(100).fadeOut("slow");
+        $("#preloder").delay(200).fadeOut("slow");
     });
 
     /*------------------
@@ -26,4 +26,32 @@
         var bg = $(this).data('setbg');
         $(this).css('background-image', 'url(' + bg + ')');
     });
+
+    /*------------------
+		Navigation
+	--------------------*/
+    $(".mobile-menu").slicknav({
+        prependTo: '#mobile-menu-wrap',
+        allowParentLinks: true
+    });
+
+    /*--------------------------
+    Testimonial Slider
+    ----------------------------*/
+    var testimonialSlider = $(".testimonial__slider");
+    testimonialSlider.owlCarousel({
+        loop: true,
+        margin: 0,
+        items: 1,
+        dots: false,
+        nav: true,
+        navText: ["<span class='arrow_left'><span/>", "<span class='arrow_right'><span/>"],
+        smartSpeed: 1200,
+        autoHeight: false,
+        autoplay: false,
+        startPosition: 'URLHash',
+        animateOut: 'fadeOut',
+        animateIn: 'fadeIn',
+    });
+
 })(jQuery);
