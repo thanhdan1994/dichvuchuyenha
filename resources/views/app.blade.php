@@ -112,13 +112,13 @@
                     </ul>
                     <div class="show-900">
                         <div class="btn-mobile btn-nav-mobile">
-                            <a href="#menu"><img src="images/bnt-nav-mobile.png"></a>
+                            <a href="#menu"><img src="{{asset('images/bnt-nav-mobile.png')}}"></a>
                         </div>
                         <div class="btn-mobile btn-show-phone-mobile bornone-m">
-                            <a href="tel:0901729729"><img src="images/hot-fff.png" /></a>
+                            <a href="tel:0901729729"><img src="{{asset('images/hot-fff.png')}}" /></a>
                         </div>
                         <div class="btn-mobile btn-show-saerch-mobile bornone-m">
-                            <a href="javascript:void(0)"><img src="images/btn_search.png" /></a>
+                            <a href="javascript:void(0)"><img src="{{asset('images/btn_search.png')}}" /></a>
                         </div>
                     </div>
                 </div>
