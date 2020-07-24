@@ -77,7 +77,7 @@
         </div>
     </section>
     <!-- Testimonial Section Begin -->
-    <section class="testimonial spad" style="background-color: #72d4dd;">
+    <section class="testimonial spad" style="background-image: url('/img/bg3.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
