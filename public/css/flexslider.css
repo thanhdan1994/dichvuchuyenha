@@ -136,10 +136,10 @@ html[xmlns] .slides {
 	z-index: 10;
 	overflow: hidden;
 	cursor: pointer;
-	
+
 }
 /*.flex-pauseplay a:before {
-	
+
 }
 .flex-pauseplay a:hover {
 	opacity: 1;
@@ -148,7 +148,7 @@ html[xmlns] .slides {
 
 }*/
 .flex-pauseplay a,.flex-pauseplay a{
-	border:none !important;	
+	border:none !important;
 	font-size:0;
 	display:none;
 }
@@ -214,11 +214,9 @@ html[xmlns] .slides {
 }
  @media screen and (max-width: 860px) {
 .flex-direction-nav .flex-prev {
-	opacity: 1;
 	left: 10px;
 }
 .flex-direction-nav .flex-next {
-	opacity: 1;
 	right: 10px;
 }
 }
