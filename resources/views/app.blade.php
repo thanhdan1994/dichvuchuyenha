@@ -19,7 +19,7 @@
 
     <meta name="language" content="vietnamese">
 
-    <link href="favicon.svg" rel="shortcut icon" />
+    <link href="/favicon.svg" rel="shortcut icon" />
 
     <link rel="stylesheet" type="text/css" href="{{asset('fontawesome-free-5.14.0-web/css/all')}}">
 
@@ -63,10 +63,10 @@
                     <div class="flex-container">
                         <div class="cell-2-4 pad-cell-3-4 outer-logo">
                             <div class="logo">
-                                <a href="{{ route('index') }}"><img src="{{asset('uploaded/logo/logo.png')}}" alt="Logo" style="max-width:100%"  /></a>
+                                <a href="{{ route('index') }}"><img src="{{asset('images/logo3.png')}}" alt="Logo" style="max-width:100%"  /></a>
                             </div>
                             <div class="slogan">
-                                <img src="{{asset('images/logo2.png')}}">
+                                <img src="{{asset('images/slogin.png')}}">
                             </div>
                         </div>
                         <div class="cell-2-4 pad-cell-1-4 outer-right">
@@ -93,9 +93,9 @@
             <div class="menubar">
                 <div class="grid">
                     <ul class="nav">
-                        <li class="active menuhome"><a href="index.html"><i class="fa fa-home" style="font-size:18px"></i></a></li>
+                        <li class="active menuhome"><a href="/">Trang chủ</a></li>
                         @foreach($categories as $category)
-                        <li class="">
+                        <li>
                             <a href="{{ route('categories.posts.index', $category->slug) }}" class="">
                                 {{ \Illuminate\Support\Str::upper($category->name) }}
                                 @if(count($category->posts()->where('priority', true)->limit(3)->orderBy('id', 'desc')->get()) > 0)

@@ -5780,6 +5780,14 @@ padding-right:20px;
 
 }
 
+.flex-direction-nav a.flex-next:before {
+    display: none;
+}
+
+.flex-direction-nav a.flex-prev:before {
+    display: none;
+}
+
 .review
 
 {
