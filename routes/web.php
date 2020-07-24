@@ -3,6 +3,7 @@
 use App\Category;
 use App\Post;
 use App\Review;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -31,6 +32,14 @@ Route::get('/', function () {
     $reviews = DB::table('reviews')->limit(5)->get();
     return view('index', compact('categories', 'banners', 'reviews'));
 })->name('index');
+
+Route::get('/gioi-thieu.html', function () {
+    $categories = Category::all();
+    $advisoryPosts = Post::where(['category_id'=> 6, 'status' => true])->limit(10)->get();
+    $priorityPosts = Post::where(['status' => true, 'priority' => true])->limit(10)->get();
+    return view('introduce', compact('categories', 'advisoryPosts', 'priorityPosts'));
+})->name('introduce');
+
 
 Route::get('/chuyen-muc-bai-viet/{slug}.html', function (Request $request) {
     $categories = Category::all();
@@ -226,4 +235,26 @@ Route::group(['prefix' => 'administrator', 'middleware' => ['auth.basic'], 'as' 
         DB::commit();
         return redirect()->route('admin.categories.posts.index', $post->category_id)->with('success', 'Bài viết đã được xóa thành công!');
     })->name('posts.destroy');
+
+    Route::get('/users/{user}', function (Request $request, User $user) {
+        $categories = Category::all();
+        return view('admin.users.edit', compact('categories', 'user'));
+    })->name('users.edit');
+
+    Route::put('/users/{user}', function (\App\Requests\UpdateUserPasswordRequest $request, User $user) {
+        if (\Illuminate\Support\Facades\Hash::check($request->oldPassword, $user->password)) {
+            DB::beginTransaction();
+            try {
+                $user->fill([
+                    'password' => \Illuminate\Support\Facades\Hash::make($request->password)
+                ])->save();
+            } catch (Exception $exception) {
+                DB::rollBack();
+                return redirect()->route('admin.users.edit', 1)->with('error', 'Có lỗi khi <strong>đổi mật khẩu</strong> ' . $exception->getMessage());
+            }
+            DB::commit();
+            return redirect()->route('admin.users.edit', $user->id)->with('success', 'Cập nhật mật khẩu mới thành công!');
+        }
+        return redirect()->route('admin.users.edit', $user->id)->with('error', 'Mật khẩu cũ của bạn không đúng');
+    })->name('users.update');
 });

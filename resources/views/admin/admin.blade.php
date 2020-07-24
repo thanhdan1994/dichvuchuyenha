@@ -22,7 +22,7 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <!-- Brand -->
     <a class="navbar-brand" href="{{ route('admin.dashboard') }}">
-        <img src="{{ asset('img/logo.png') }}" />
+        <img src="{{asset('uploaded/logo/logo.png')}}" />
     </a>
 
     <!-- Links -->
@@ -43,6 +43,7 @@
                 <a class="dropdown-item" href="{{ route('admin.settings.information') }}">Thông tin</a>
                 <a class="dropdown-item" href="{{ route('admin.categories.index') }}">Mô tả dịch vụ</a>
                 <a class="dropdown-item" href="{{ route('admin.reviews.index') }}">Đánh giá khách hàng</a>
+                <a class="dropdown-item" href="{{ route('admin.users.edit', \Illuminate\Support\Facades\Auth::id()) }}">Đổi mật khẩu</a>
             </div>
         </li>
     </ul>

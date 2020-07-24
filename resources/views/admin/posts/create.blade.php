@@ -14,11 +14,11 @@
                 </div>
             @endforeach
 
-        @elseif(session()->has('message'))
+        @elseif(session()->has('success'))
             <div class="box no-border">
                 <div class="box-tools">
                     <p class="alert alert-success alert-dismissible">
-                        {{ session()->get('message') }}
+                        {{ session()->get('success') }}
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </p>
                 </div>
@@ -40,13 +40,13 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-12">
-                            <label>Tên sản phẩm:</label>
+                            <label>Tên dịch vụ:</label>
                             <input type="text" class="form-control" name="name" value="{{old('name')}}">
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Mô tả sản phẩm:</label>
+                    <label>Mô tả dịch vụ:</label>
                     <textarea class="form-control" rows="3" name="description">{{old('description')}}</textarea>
                 </div>
                 <div class="form-group">
