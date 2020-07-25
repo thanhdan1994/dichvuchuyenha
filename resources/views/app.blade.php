@@ -63,7 +63,7 @@
                     <div class="flex-container">
                         <div class="cell-2-4 pad-cell-3-4 outer-logo">
                             <div class="logo">
-                                <a href="{{ route('index') }}"><img src="{{asset('images/logo3.png')}}" alt="Logo" style="max-width:100%"  /></a>
+                                <a href="{{ route('index') }}"><img src="{{asset('images/logo5.png')}}" alt="Logo" style="max-width:100%; max-height: 100px"  /></a>
                             </div>
                             <div class="slogan">
                                 <img src="{{asset('images/slogin.png')}}">
