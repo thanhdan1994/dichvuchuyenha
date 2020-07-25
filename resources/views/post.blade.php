@@ -1,5 +1,52 @@
 @extends('app')
 
+@section('title', $post->name . ' | Tín Phát Express' )
+@section('head')
+    <meta name="description" content="{{ strip_tags($post->description) }}"/>
+    <meta property="og:type" content="product"/>
+    <meta property="og:title" content="{{ $post->name }}"/>
+    <meta property="og:description" content="{{ strip_tags($post->description) }}"/>
+    <meta property="og:image" content="{{ $post->thumbnail }}"/>
+    <script charset="utf-8" src="//cdn.iframe.ly/embed.js?api_key=c2b2fc7ddc097c556e1050"></script>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [{
+            "@type": "ListItem",
+            "position": 3,
+            "name": "<?=$post->name ?>",
+            "item": "<?=request()->url()?>"
+          },{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "<?= $post->category->name ?>",
+            "item": "<?= env('APP_URL') . '/chuyen-muc-bai-viet' . '/' . $post->category->slug . '.html'?>"
+          },{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Trang chủ",
+            "item": "<?=env('APP_URL')?>"
+          }]
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "NewsArticle",
+          "headline": "<?php echo $post->name ?>",
+          "image": [
+            "<?php echo $post->thumbnail ?>"
+           ],
+          "description": "<?=$post->description?>",
+          "author" : {
+            "@type": "Person",
+            "name": "Tín Phát Express"
+          }
+        }
+    </script>
+@endsection
+
 @section('content')
 <div class="main-content">
     <div class="crumb hide-on-mobile">

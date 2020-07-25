@@ -1,5 +1,20 @@
 @extends('app')
 
+@section('title', 'Chuyển nhà trọn gói, chuyển văn phòng, cho thuê taxi tải - Tín Phát Express')
+@section('head')
+    <meta name="description" content="Với hơn 15 + Năm kinh nghiệm phục vụ trong lĩnh vực vận chuyển cung cấp giải pháp, phục vụ dịch vụ chuyển nhà trọn gói, chuyển văn phòng trọn gói, cho thuê xe tải vận chuyển chuyên nghiệp số 1 TPHCM. Chỉ từ 140k bạn đã có thể sử dụng được dịch vụ chuyển nhà trọn gói chuyên nghiệp tại Tín Phát Express" />
+    <meta name="keywords" content="Chuyển nhà, chuyển văn phòng, taxi tải">
+    <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}" type="text/css">
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "url": "<?=request()->url()?>",
+        "name": "Tín Phát Express - Dịch vụ chuyển nhà, chuyển nhà trọn gói, cho thuê taxi tải, chuyển văn phòng.",
+        "description": "Với hơn 15 + Năm kinh nghiệm phục vụ trong lĩnh vực vận chuyển cung cấp giải pháp, phục vụ dịch vụ chuyển nhà trọn gói, chuyển văn phòng trọn gói, cho thuê xe tải vận chuyển chuyên nghiệp số 1 TPHCM. Chỉ từ 140k bạn đã có thể sử dụng được dịch vụ chuyển nhà trọn gói chuyên nghiệp tại Tín Phát Express."
+    }
+    </script>
+@endsection
 @section('banners')
     <link rel="stylesheet" type="text/css" href="{{asset('css/flexslider.css')}}">
     <script src="{{asset('js/jquery.flexslider.js')}}"></script>
@@ -95,7 +110,7 @@
                 <div class="flex-container flex-container-space-between">
                     <div class="cell-1-2 pad-cell-1-2 mobile-cell-1-1">
                         <div class="box-info-home">
-                            <h1 class="title-info-home"><a href="https://chuyennhathanhtam.vn/gioi-thieu/gioi-thieu-chung.html">Công ty chuyển nhà trọn gói Tín Phát Express</a></h1>
+                            <h1 class="title-info-home"><a href="{{ route('introduce') }}">Công ty chuyển nhà trọn gói Tín Phát Express</a></h1>
                             <div class="content">
                                 Nhắc đến dịch vụ chuyển nh&agrave; trọn g&oacute;i tại TPHCM chắc hẳn ai cũng biết đến dịch vụ chuyển nh&agrave; trọn g&oacute;i Tín Phát.&nbsp;<br />
                                 Ch&iacute;nh những gi&aacute; trị, lợi &iacute;ch từ dịch vụ chuyển nh&agrave; - chuyển văn ph&ograve;ng - cho thu&ecirc; xe taxi tải mang lại gi&uacute;p kh&aacute;ch h&agrave;ng chuyển h&agrave;ng h&oacute;a, t&agrave;i sản từ nơi ở cũ sang nơi ở mới nhanh ch&oacute;ng - thuận tiện hơn.&nbsp;<br />
@@ -104,7 +119,7 @@
                                 &nbsp;
                                 <div class="c"></div>
                             </div>
-                            <a class="btn-wc" href="https://chuyennhathanhtam.vn/gioi-thieu/gioi-thieu-chung.html">Xem chi tiết <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                            <a class="btn-wc" href="{{ route('introduce') }}">Xem chi tiết <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <div class="cell-1-2 pad-cell-1-2 mobile-cell-1-1 adv-home">

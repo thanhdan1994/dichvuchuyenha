@@ -8,44 +8,25 @@
 <html>
 
 <head>
-
     <meta charset="utf-8">
-
-    <title>15+ năm Dịch vụ chuyển nhà trọn gói, chuyển văn phòng, taxi tải - Tín Phát Express</title>
-
+    <title>@yield('title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
-
     <meta http-equiv="Content-Language" content="vi" />
-
     <meta name="language" content="vietnamese">
-
     <link href="/favicon.svg" rel="shortcut icon" />
-
     <link rel="stylesheet" type="text/css" href="{{asset('fontawesome-free-5.14.0-web/css/all')}}">
-
     <link rel="stylesheet" type="text/css" href="{{asset('css/jquery.mmenu.all.css')}}">
-
     <link rel="stylesheet" type="text/css" href="{{asset('css/binh.css')}}">
-
     <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
-
     <link rel="stylesheet" type="text/css" href="{{asset('css/grid.css')}}">
-
     <link href="{{asset('css/swiper.min.css')}}" type="text/css" rel="stylesheet" />
-
-
-
     <script src="{{asset('js/jquery-1.10.1.min.js')}}"></script>
-
     <script type="text/javascript" src="{{asset('js/swiper.min.js')}}"></script>
-
     <script src="{{asset('js/jquery.form.min.js')}}"></script>
-
     <script src="{{asset('js/jquery.mmenu.min.all.js')}}"></script>
-
     <script src="{{asset('js/script.js')}}"></script>
-
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400,700,800,800i&amp;subset=vietnamese" rel="stylesheet">
+    @yield('head')
 </head>
 
 

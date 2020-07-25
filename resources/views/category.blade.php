@@ -1,5 +1,28 @@
 @extends('app')
 
+@section('title', $category['name'])
+@section('head')
+    <meta name="description" content="{{ strip_tags($category['name']) }}"/>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "<?=/** @var Category $category */
+            $category['name'] ?>",
+            "item": "<?= request()->url() ?>"
+          },{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Trang chủ",
+            "item": "<?=env('APP_URL')?>"
+          }]
+        }
+    </script>
+@endsection
+
 @section('content')
 <div class="main-content">
     @if(count($category->posts) > 0)
