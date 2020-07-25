@@ -216,6 +216,9 @@
 
     </div>
 </div>
+<div class="zalo-chat-widget" data-oaid="3352235758106363000" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="350" data-height="420"></div>
+
+<script src="https://sp.zalo.me/plugins/sdk.js"></script>
 <div class="c"></div>
 <div class="footer">
     <div class="inner-footer">
@@ -225,7 +228,7 @@
                     <div class="title-footer">Công Ty Dịch Vụ Chuyển Nhà Tín Phát</div>
                     <div class="content-footer">
                         <div><img alt="contac địa chỉ" src="{{asset('uploaded/contact-address-icon.png')}}" style="height:23px; width:23px" />&nbsp;VPGD:&nbsp;{{ $addressGlobal }}</div>
-                        <div><span style="font-size:14px"><strong>Hotline:</strong>&nbsp;{{ $phoneGlobal }} Mr Công.</span></div>
+                        <div><span style="font-size:14px"><strong>Hotline:</strong>&nbsp;{{ $phoneGlobal }} Mr. Phát.</span></div>
                     </div>
                 </div>
             </div>
