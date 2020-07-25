@@ -6001,4 +6001,18 @@ blockquote{
     .main-content {
         padding-top: 10px;
     }
+    .icon-page-home {
+        max-height: 281px;
+    }
 }
+@media screen and (min-width: 1000px) {
+    .item-news-home img {
+        max-height: 176px;
+    }
+    .icon-page-home {
+        max-height: 249px;
+    }
+}
+
+
+

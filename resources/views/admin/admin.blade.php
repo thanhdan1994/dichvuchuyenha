@@ -22,7 +22,7 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <!-- Brand -->
     <a class="navbar-brand" href="{{ route('admin.dashboard') }}">
-        <img src="{{asset('uploaded/logo/logo.png')}}" />
+        <img src="{{asset('images/logo5.png')}}" width="100px" height="100px" />
     </a>
 
     <!-- Links -->
