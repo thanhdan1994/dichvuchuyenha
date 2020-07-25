@@ -78,9 +78,9 @@
                             </div>
                             <div class="c"></div>
                             <div class="search-destop">
-                                <form id="frmseach" action="https://chuyennhathanhtam.vn/search/">
-                                    <input name="qr" placeholder="Từ khóa" type="text">
-                                    <a href="index.html#" class="btn-search" onclick="document.getElementById('frmseach').submit();"><img src="{{asset('images/btn_search1.png')}}"/></a>
+                                <form id="frmseach" action="{{ route('search') }}">
+                                    <input name="q" placeholder="Từ khóa" type="text">
+                                    <a href="javascript: void(0)" class="btn-search" onclick="document.getElementById('frmseach').submit();"><img src="{{asset('images/btn_search1.png')}}"/></a>
                                 </form>
                             </div>
                             <div class="hotline">
@@ -125,9 +125,9 @@
             </div>
             <div class="c"></div>
             <div class="box-search-mobile">
-                <form id="searchformmoble" method="get" action="https://chuyennhathanhtam.vn/search/">
-                    <input type="text" style="outline:none" placeholder="Từ khóa" name="qr">
-                    <a class="btn-search-mobile" href="index.html#" onClick="$('#searchformmoble').submit();"><i class="fa fa-search" aria-hidden="true"></i></a>
+                <form id="searchformmoble" method="get" action="{{ route('search') }}">
+                    <input type="text" style="outline:none" placeholder="Từ khóa" name="q">
+                    <a class="btn-search-mobile" href="javascript: void(0)" onClick="$('#searchformmoble').submit();"><i class="fa fa-search" aria-hidden="true"></i></a>
                 </form>
             </div>
             <script type="text/javascript">

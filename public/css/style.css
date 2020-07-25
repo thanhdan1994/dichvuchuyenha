@@ -5992,3 +5992,13 @@ blockquote{
 	border-left:solid 3px #008C44;
 
 }
+
+.main-content {
+    padding-top: 200px;
+}
+
+@media screen and (max-width: 600px) {
+    .main-content {
+        padding-top: 10px;
+    }
+}

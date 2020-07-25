@@ -59,6 +59,13 @@ Route::get('/bai-viet/{slug}.html', function (Request $request) {
     return view('post', compact('categories', 'post', 'relatedPosts', 'advisoryPosts'));
 })->name('post.show');
 
+Route::get('/tim-kiem.html', function (Request $request) {
+    $categories = Category::all();
+    $q = $request->get('q');
+    $posts = Post::where('name', 'like', '%'.$q.'%')->where('status', true)->paginate(20);
+    return view('search', compact('categories', 'posts'));
+})->name('search');
+
 Route::group(['prefix' => 'administrator', 'middleware' => ['auth.basic'], 'as' => 'admin.' ], function () {
     Route::get('/', function () {
         $categories = Category::all();

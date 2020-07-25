@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-<div style="padding-top: 200px;">
+<div class="main-content">
     <div class="crumb hide-on-mobile">
         <div class="grid bb">
             <a href="/">Trang chủ</a>

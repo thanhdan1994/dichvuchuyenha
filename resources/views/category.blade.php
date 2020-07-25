@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-<div style="padding-top: 200px;">
+<div class="main-content">
     @if(count($category->posts) > 0)
         <div class="line-home">
             <div class="grid">
