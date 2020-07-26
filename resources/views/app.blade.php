@@ -54,7 +54,7 @@
                             <div class="menu-top">
                                 <div class="menuitem m-width-1240">
                                     <a href="{{ route('introduce') }}" class="hide-on-mobile">Giới Thiệu </a>
-                                    <a href="tel: 0931.890.990" class="hide-on-mobile"><i class="fa fa-envelope-o"></i> Liên hệ</a>
+                                    <a href="tel: {{$phoneGlobal}}" class="hide-on-mobile"><i class="fa fa-envelope-o"></i> Liên hệ</a>
                                 </div>
                             </div>
                             <div class="c"></div>
@@ -96,7 +96,7 @@
                             <a href="#menu"><img src="{{asset('images/bnt-nav-mobile.png')}}"></a>
                         </div>
                         <div class="btn-mobile btn-show-phone-mobile bornone-m">
-                            <a href="tel:0901729729"><img src="{{asset('images/hot-fff.png')}}" /></a>
+                            <a href="tel:{{$phoneGlobal}}"><img src="{{asset('images/hot-fff.png')}}" /></a>
                         </div>
                         <div class="btn-mobile btn-show-saerch-mobile bornone-m">
                             <a href="javascript:void(0)"><img src="{{asset('images/btn_search.png')}}" /></a>
