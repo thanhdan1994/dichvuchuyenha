@@ -76,6 +76,7 @@
                     <ul class="nav">
                         <li class="active menuhome"><a href="/">Trang chủ</a></li>
                         @foreach($categories as $category)
+                            @if($category->id != 7)
                         <li>
                             <a href="{{ route('categories.posts.index', $category->slug) }}" class="">
                                 {{ \Illuminate\Support\Str::upper($category->name) }}
@@ -89,6 +90,7 @@
                                 @endforeach
                             </ul>
                         </li>
+                            @endif
                         @endforeach
                     </ul>
                     <div class="show-900">

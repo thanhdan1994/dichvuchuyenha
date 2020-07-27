@@ -141,7 +141,7 @@
         </div>
     </div>
     @foreach($categories as $category)
-        @if(in_array($category->slug, ['dich-vu-chuyen-nha', 'goc-tu-van', 'chuyen-nha-tron-goi']))
+        @if(in_array($category->slug, ['dich-vu-chuyen-nha', 'goc-tu-van', 'chuyen-nha-tron-goi', 'bao-chi-noi-ve-chung-toi']))
             <div class="line-home">
                 <div class="grid">
                     <h2 class="title-home"><a href="{{ route('categories.posts.index', $category->slug) }}">{{ \Illuminate\Support\Str::upper($category->name) }}</a></h2>
