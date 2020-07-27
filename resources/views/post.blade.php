@@ -36,7 +36,7 @@
           "@type": "NewsArticle",
           "headline": "<?php echo $post->name ?>",
           "image": [
-            "<?php echo $post->thumbnail ?>"
+            "<?= env('APP_URL') . $post->thumbnail ?>"
            ],
           "description": "<?=$post->description?>",
           "author" : {
@@ -66,8 +66,8 @@
                             <li class="active">
                                 <a href="{{route('categories.posts.index', $category->slug)}}">{{$category->name}}</a>
                                 <ul>
-                                    @foreach($category->posts()->where('priority', true)->limit(10)->orderBy('id', 'desc')->get() as $post)
-                                        <li><a href="{{ route('post.show', $post->slug) }}">{{ $post->name }}</a></li>
+                                    @foreach($category->posts()->where('priority', true)->limit(10)->orderBy('id', 'desc')->get() as $menuPost)
+                                        <li><a href="{{ route('post.show', $menuPost->slug) }}">{{ $menuPost->name }}</a></li>
                                     @endforeach
                                 </ul>
                             </li>
@@ -81,18 +81,18 @@
                 <div class="c10"></div>
                 <h2 class="title-left bgblue"><a href="javascript: void(0)">Góc tư vấn</a></h2>
                 <div class="box-border-left">
-                    @foreach($advisoryPosts as $post)
+                    @foreach($advisoryPosts as $advisoryPost)
                         <div class="item-news-left">
-                            <a href="{{ route('post.show', $post->slug) }}">{{$post->name}} </a>
+                            <a href="{{ route('post.show', $advisoryPost->slug) }}">{{$advisoryPost->name}} </a>
                         </div>
                     @endforeach
                 </div>
                 <div class="c10"></div>
                 <h2 class="title-left bgblue"><a href="javascript: void(0)">Bài viết liên quan</a></h2>
                 <div class="box-border-left">
-                    @foreach($relatedPosts as $post)
+                    @foreach($relatedPosts as $relatedPost)
                         <div class="item-news-left">
-                            <a href="{{ route('post.show', $post->slug) }}">{{$post->name}} </a>
+                            <a href="{{ route('post.show', $relatedPost->slug) }}">{{$relatedPost->name}} </a>
                         </div>
                     @endforeach
                 </div>
