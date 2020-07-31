@@ -2,9 +2,9 @@
 
 @section('title', 'Chuyển nhà trọn gói, chuyển văn phòng, cho thuê taxi tải - Tín Phát Express')
 @section('head')
-    <meta name="description" content="Với hơn 15 + Năm kinh nghiệm phục vụ trong lĩnh vực vận chuyển cung cấp giải pháp, phục vụ dịch vụ chuyển nhà trọn gói, chuyển văn phòng trọn gói, cho thuê xe tải vận chuyển chuyên nghiệp số 1 TPHCM. Chỉ từ 140k bạn đã có thể sử dụng được dịch vụ chuyển nhà trọn gói chuyên nghiệp tại Tín Phát Express" />
+    <meta name="description" content="Với hơn 15 + Năm kinh nghiệm phục vụ trong lĩnh vực vận chuyển cung cấp giải pháp, phục vụ dịch vụ chuyển nhà trọn gói, chuyển văn phòng trọn gói, cho thuê xe tải vận chuyển chuyên nghiệp số 1 TPHCM" />
     <meta name="keywords" content="Chuyển nhà, chuyển văn phòng, taxi tải">
-    <meta property="og:description" content="Với hơn 15 + Năm kinh nghiệm phục vụ trong lĩnh vực vận chuyển cung cấp giải pháp, phục vụ dịch vụ chuyển nhà trọn gói, chuyển văn phòng trọn gói, cho thuê xe tải vận chuyển chuyên nghiệp số 1 TPHCM. Chỉ từ 140k bạn đã có thể sử dụng được dịch vụ chuyển nhà trọn gói chuyên nghiệp tại Tín Phát Express" />
+    <meta property="og:description" content="Với hơn 15 + Năm kinh nghiệm phục vụ trong lĩnh vực vận chuyển cung cấp giải pháp, phục vụ dịch vụ chuyển nhà trọn gói, chuyển văn phòng trọn gói, cho thuê xe tải vận chuyển chuyên nghiệp số 1 TPHCM" />
     <meta property="og:keywords" content="Chuyển nhà, chuyển văn phòng, taxi tải">
     <meta property="article:publisher" content="https://www.facebook.com/camdung272" />
     <meta property="og:type" content="website" />
@@ -18,7 +18,7 @@
         "@type": "WebSite",
         "url": "<?=request()->url()?>",
         "name": "Tín Phát Express - Dịch vụ chuyển nhà, chuyển nhà trọn gói, cho thuê taxi tải, chuyển văn phòng.",
-        "description": "Với hơn 15 + Năm kinh nghiệm phục vụ trong lĩnh vực vận chuyển cung cấp giải pháp, phục vụ dịch vụ chuyển nhà trọn gói, chuyển văn phòng trọn gói, cho thuê xe tải vận chuyển chuyên nghiệp số 1 TPHCM. Chỉ từ 140k bạn đã có thể sử dụng được dịch vụ chuyển nhà trọn gói chuyên nghiệp tại Tín Phát Express."
+        "description": "Với hơn 15 + Năm kinh nghiệm phục vụ trong lĩnh vực vận chuyển cung cấp giải pháp, phục vụ dịch vụ chuyển nhà trọn gói, chuyển văn phòng trọn gói, cho thuê xe tải vận chuyển chuyên nghiệp số 1 TPHCM"
     }
     </script>
 @endsection
