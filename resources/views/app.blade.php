@@ -199,9 +199,7 @@
 
     </div>
 </div>
-<div class="zalo-chat-widget" data-oaid="3352235758106363000" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="350" data-height="420"></div>
 
-<script src="https://sp.zalo.me/plugins/sdk.js"></script>
 <div class="c"></div>
 <div class="footer">
     <div class="inner-footer">
@@ -225,7 +223,7 @@
 
                     <div class="box-fanpage">
 
-                        <iframe src="//www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/Không-chính-thức-Manchester-City-2017-142919189701294/&amp;height=220&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%; height:100%;" allowTransparency="false" width="100%"></iframe>
+                        <iframe src="//www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/camdung272/&amp;height=220&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%; height:100%;" allowTransparency="false" width="100%"></iframe>
 
                     </div>
 
@@ -239,7 +237,7 @@
     <div class="grid">
         <div class="flex-container flex-container-space-between">
             <div class="cell-1-2 mobile-cell-1-1">
-                Copyright 2017 -&nbsp; All Right Reserved.&nbsp;
+                Copyright 2017 -&nbsp; All Right Reserved.
             </div>
         </div>
     </div>
@@ -258,5 +256,30 @@
         @endforeach
     </ul>
 </nav>
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            xfbml            : true,
+            version          : 'v7.0'
+        });
+    };
+
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your Chat Plugin code -->
+<div class="fb-customerchat"
+     attribution=setup_tool
+     page_id="106877024340466"
+     logged_in_greeting="Bạn vui lòng để lại SĐT hoặc gọi Hotline {{ $phoneGlobal }} Để được tư vấn báo giá"
+     logged_out_greeting="Bạn vui lòng để lại SĐT hoặc gọi Hotline {{ $phoneGlobal }} Để được tư vấn báo giá">
+</div>
 </body>
 </html>
