@@ -4,6 +4,13 @@
 @section('head')
     <meta name="description" content="Với hơn 15 + Năm kinh nghiệm phục vụ trong lĩnh vực vận chuyển cung cấp giải pháp, phục vụ dịch vụ chuyển nhà trọn gói, chuyển văn phòng trọn gói, cho thuê xe tải vận chuyển chuyên nghiệp số 1 TPHCM. Chỉ từ 140k bạn đã có thể sử dụng được dịch vụ chuyển nhà trọn gói chuyên nghiệp tại Tín Phát Express" />
     <meta name="keywords" content="Chuyển nhà, chuyển văn phòng, taxi tải">
+    <meta property="og:description" content="Với hơn 15 + Năm kinh nghiệm phục vụ trong lĩnh vực vận chuyển cung cấp giải pháp, phục vụ dịch vụ chuyển nhà trọn gói, chuyển văn phòng trọn gói, cho thuê xe tải vận chuyển chuyên nghiệp số 1 TPHCM. Chỉ từ 140k bạn đã có thể sử dụng được dịch vụ chuyển nhà trọn gói chuyên nghiệp tại Tín Phát Express" />
+    <meta property="og:keywords" content="Chuyển nhà, chuyển văn phòng, taxi tải">
+    <meta property="article:publisher" content="https://www.facebook.com/camdung272" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="{{ asset('images/fb-shared.jpeg') }}" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="680" />
     <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}" type="text/css">
     <script type="application/ld+json">
     {
