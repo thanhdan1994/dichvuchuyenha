@@ -209,7 +209,8 @@
                     <div class="title-footer">Công Ty Dịch Vụ Chuyển Nhà Tín Phát</div>
                     <div class="content-footer">
                         <div><img alt="contac địa chỉ" src="{{asset('uploaded/contact-address-icon.png')}}" style="height:23px; width:23px" />&nbsp;VPGD:&nbsp;{{ $addressGlobal }}</div>
-                        <div><img alt="bãi xe tín phát express" src="{{asset('uploaded/contact-address-icon.png')}}" style="height:23px; width:23px" />&nbsp;Bãi xe:&nbsp;1190 Kha Vạn Cân, Phường Linh Tây, Quận Thủ Đức, TPHCM</div>
+                        <div><img alt="bãi xe tín phát express" src="{{asset('uploaded/contact-address-icon.png')}}" style="height:23px; width:23px" />&nbsp;Bãi xe 1:&nbsp;1190 Kha Vạn Cân, Phường Linh Tây, Quận Thủ Đức, TPHCM</div>
+                        <div><img alt="bãi xe tín phát express" src="{{asset('uploaded/contact-address-icon.png')}}" style="height:23px; width:23px" />&nbsp;Bãi xe 2:&nbsp;51 đường 359, Phường Phước Long B, Quận 9, TPHCM</div>
                         <div><span style="font-size:14px"><strong>Hotline:</strong>&nbsp;{{ $phoneGlobal }} Mr. Phát.</span></div>
                     </div>
                 </div>

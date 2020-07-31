@@ -33,6 +33,7 @@
                 </div>
             </div>
         @endif
+        <input type="hidden" name="routeUploadFile" value="{{ route('api.uploads.file') }}">
         <form method="POST" action="{{ route('admin.categories.update', $category->id) }}" class="was-validated" enctype="multipart/form-data">
             @method('PUT')
             {{ csrf_field() }}
@@ -50,10 +51,45 @@
                         <label>Mô tả dịch vụ:</label>
                         <textarea class="form-control" rows="3" name="description">{{$category->description}}</textarea>
                     </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-4">
+                                <input type="hidden" class="bannerUrl" name="thumbnail" value="{{ $category->thumbnail }}"/>
+                                <input type="file" name="file" style="display: none"/>
+                                <img class="img-thumbnail js--banners" src="{{$category->thumbnail}}" alt="chọn ảnh" />
+                            </div>
+                        </div>
+                    </div>
                     <button type="submit" class="btn btn-primary">Lưu lại</button>
                     <a class="btn btn-danger" href="{{ route('admin.categories.index') }}">Hủy bỏ</a>
                 </div>
             </div>
         </form>
     </div>
+@endsection
+
+@section('js')
+    <script type="text/javascript">
+        $('.js--banners').click(function(){
+            let bannerInput = $(this).siblings('.bannerUrl');
+            let imageElement = $(this);
+            $(this).siblings('input[name=file]').trigger('click').on('change', function (event) {
+                const formData = new FormData();
+                formData.append('file', event.target.files[0]);
+                fetch($('input[name=routeUploadFile]').val(), {
+                    method: 'POST',
+                    body: formData,
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(bannerInput);
+                        bannerInput.val(data.banner);
+                        imageElement.attr('src', data.banner);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            });
+        });
+    </script>
 @endsection
