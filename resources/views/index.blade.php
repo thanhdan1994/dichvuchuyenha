@@ -174,7 +174,7 @@
                 <div class="cell-1-4 mobile-cell-1-1">
                     <div class="hd-review">
                         <div class="inner-hd">
-                            <a href="/khach-hang-noi-ve-chung-toi/">KHÁCH HÀNG <br /> NÓI GÌ VỀ <br /> CHÚNG TÔI</a>
+                            <a href="javascript: void(0)">KHÁCH HÀNG <br /> NÓI GÌ VỀ <br /> CHÚNG TÔI</a>
                             <div class="swiper-pagination"></div>
                         </div>
                     </div>

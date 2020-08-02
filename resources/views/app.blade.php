@@ -1,15 +1,16 @@
-
-
-
-
-
 <!doctype html>
-
 <html>
-
 <head>
     <meta charset="utf-8">
     <title>@yield('title')</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('GOOGLE_ANALYTICS') }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ env('GOOGLE_ANALYTICS') }}');
+    </script>
+    <meta name="google-site-verification" content="{{ env('GOOGLE_VERIFICATION') }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
     <meta http-equiv="Content-Language" content="vi" />
     <meta name="language" content="vietnamese">

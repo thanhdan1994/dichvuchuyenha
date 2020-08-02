@@ -7,6 +7,9 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Spatie\Sitemap\SitemapGenerator;
+use Spatie\Sitemap\Tags\Url;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -264,4 +267,34 @@ Route::group(['prefix' => 'administrator', 'middleware' => ['auth.basic'], 'as' 
         }
         return redirect()->route('admin.users.edit', $user->id)->with('error', 'Mật khẩu cũ của bạn không đúng');
     })->name('users.update');
+
+    Route::get('/create-sitemap', function () {
+        $sitemap = SitemapGenerator::create(env('APP_URL'))
+            ->getSitemap()
+            ->add(Url::create('/')
+                ->setLastModificationDate(Carbon::yesterday())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+                ->setPriority(0.1));
+        $categories = Category::all();
+        foreach ($categories as $key => $item) {
+            $url = env('APP_URL') . '/chuyen-muc-bai-viet/' . $item->slug . '.html';
+            $sitemap->add(Url::create($url)
+                ->setLastModificationDate(Carbon::yesterday())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+                ->setPriority(0.1));
+        }
+
+        $posts = \App\Post::where('status', true)->get();
+        foreach ($posts as $key => $item) {
+            $url = env('APP_URL') . '/bai-viet/' . $item->slug . '.html';
+            $sitemap->add(Url::create($url)
+                ->setLastModificationDate(Carbon::yesterday())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
+                ->setPriority(0.8));
+        }
+
+
+        $sitemapContent = $sitemap->writeToFile(public_path('sitemap.xml'));
+        return $sitemapContent;
+    })->name('sitemap.create');
 });

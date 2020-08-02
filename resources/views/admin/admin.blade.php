@@ -43,6 +43,7 @@
                 <a class="dropdown-item" href="{{ route('admin.settings.information') }}">Thông tin</a>
                 <a class="dropdown-item" href="{{ route('admin.categories.index') }}">Mô tả dịch vụ</a>
                 <a class="dropdown-item" href="{{ route('admin.reviews.index') }}">Đánh giá khách hàng</a>
+                <a class="dropdown-item" href="{{ route('admin.sitemap.create') }}" target="_blank">Tạo sitemap</a>
                 <a class="dropdown-item" href="{{ route('admin.users.edit', \Illuminate\Support\Facades\Auth::id()) }}">Đổi mật khẩu</a>
             </div>
         </li>
