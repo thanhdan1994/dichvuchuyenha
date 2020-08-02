@@ -20,6 +20,7 @@
             <thead>
             <tr>
                 <th scope="col">Tên dịch vụ</th>
+                <th scope="col">Ảnh</th>
                 <th scope="col"></th>
             </tr>
             </thead>
@@ -27,6 +28,7 @@
             @foreach($categories as $key => $category)
                 <tr>
                     <th scope="row">{{$category->name}}</th>
+                    <th scope="row"><img src="{{$category->thumbnail}}" style="width: 200px; height: 150px" /></th>
                     <td><a class="btn btn-success mb-2" href="{{route('admin.categories.edit', $category->id)}}">Sửa mô tả</a></td>
                 </tr>
             @endforeach

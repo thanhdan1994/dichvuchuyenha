@@ -134,6 +134,7 @@ Route::group(['prefix' => 'administrator', 'middleware' => ['auth.basic'], 'as' 
         DB::beginTransaction();
         try {
             $category->description = $request->get('description');
+            $category->thumbnail = $request->get('thumbnail');
             $category->save();
         } catch (Exception $exception) {
             DB::rollBack();
